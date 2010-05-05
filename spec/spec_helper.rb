@@ -1,16 +1,9 @@
-require 'rubygems'
-
-# use local dm-core if running from a typical dev checkout.
-lib = File.join('..', '..', 'dm-core', 'lib')
-$LOAD_PATH.unshift(lib) if File.directory?(lib)
-
-# use local dm-adjust if running from a typical dev checkout.
-lib = File.join('..', 'dm-adjust', 'lib')
-$LOAD_PATH.unshift(lib) if File.directory?(lib)
+require 'dm-migrations'
+require 'dm-transactions'
+require 'dm-adjust'
 
 # Support running specs with 'rake spec' and 'spec'
 $LOAD_PATH.unshift('lib') unless $LOAD_PATH.include?('lib')
-
 require 'dm-is-list'
 
 def load_driver(name, default_uri)

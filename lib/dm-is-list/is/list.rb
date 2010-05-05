@@ -250,7 +250,7 @@ module DataMapper
         extend  DataMapper::Is::List::ClassMethods
         include DataMapper::Is::List::InstanceMethods
 
-        unless properties.any? { |p| p.name == :position && p.type == Integer }
+        unless properties.any? { |p| p.name == :position && p.primitive == Integer }
           property :position, Integer
         end
 
