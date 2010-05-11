@@ -1,3 +1,7 @@
+require 'dm-core'
+require 'dm-adjust'
+require 'dm-transactions'
+
 module DataMapper
   module Is
 
@@ -612,4 +616,7 @@ module DataMapper
       end # InstanceMethods
     end # List
   end # Is
+
+  Model.append_extensions(Is::List)
+
 end # DataMapper
