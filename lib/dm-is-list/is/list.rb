@@ -13,21 +13,17 @@ module DataMapper
     #
     # === Stable
     #
-    # Install the +dm-more+ gem, which will by default install +dm-is-list+ and other required gems.
+    # Install the +dm-is-list+ gem using rubygems.
     #
-    #   $ (sudo)? gem install dm-more
+    #   $ gem install dm-is-list
     #
     # === Edge
     #
-    # Download or clone +dm-more+ from Github[http://github.com/datamapper/dm-more/].
+    # Download or clone +dm-is-list+ from Github[http://github.com/datamapper/dm-is-list/].
     #
-    #   $ cd /path/to/dm-more
+    #   $ cd /path/to/dm-is-list
     #
-    #   $ rake install            # will install all the dm-more gems (some of which are required by dm-is-list)
-    #
-    #   # enter your password at the prompt, if required
-    #   $ password ...
-    #
+    #   $ rake install
     #
     # == Getting started
     #
