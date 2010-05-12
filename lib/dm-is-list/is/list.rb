@@ -1,6 +1,6 @@
 require 'dm-core'
-require 'dm-adjust'
 require 'dm-transactions'
+require 'dm-adjust'
 
 module DataMapper
   module Is
