@@ -61,7 +61,7 @@ describe 'DataMapper::Is::List' do
           items.each{ |item| item.update(:position => [4,2,8,32,16][item.id - 1]) }
           todo_list.should == [ [2, 2], [1, 4], [3, 8], [5, 16], [4, 32] ]
 
-          Todo.repair_list(:user_id => @u1.id)
+          Todo.repair_list(:user_id => @u1.id).should be(true)
           todo_list.should == [ [2, 1], [1, 2], [3, 3], [5, 4], [4, 5] ]
         end
       end
@@ -69,7 +69,7 @@ describe 'DataMapper::Is::List' do
       it "should repair unscoped lists" do
         DataMapper.repository(:default) do |repos|
           Todo.all.map { |t| [t.id, t.position] }.should == [ [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 1], [7, 2], [8, 3] ]
-          Todo.repair_list
+          Todo.repair_list.should be(true)
           # note the order, repairs lists based on position
           Todo.all.map { |t| [t.id, t.position] }.should == [ [1, 1], [2, 3], [3, 5], [4, 7], [5, 8], [6, 2], [7, 4], [8, 6] ]
           Todo.all(:order => [:position]).map { |t| t.id }.should == [1, 6, 2, 7, 3, 8, 4, 5]
@@ -494,7 +494,7 @@ describe 'DataMapper::Is::List' do
           todo_list.should == [ [1, 1], [2, 2], [3, 3], [4, 4], [5, 20] ]
 
           item = Todo.get(5)
-          item.repair_list
+          item.repair_list.should be(true)
           item.position.should == 5
         end
       end
@@ -510,7 +510,7 @@ describe 'DataMapper::Is::List' do
           todo_list.should == [ [2, 5], [4, 48], [1, 83], [5, 99], [3, 186] ]
 
           item = Todo.get(5)
-          item.repair_list
+          item.repair_list.should be(true)
           # note position numbers being 1 - 5, and it retained the id positions
           todo_list.should == [ [2, 1], [4, 2], [1, 3], [5, 4], [3, 5] ]
         end
