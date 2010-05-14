@@ -313,8 +313,11 @@ module DataMapper
         # @api public
         def repair_list(scope = {})
           return false unless scope.keys.all?{ |s| list_options[:scope].include?(s) || s == :order }
-          all({ :order => [ :position ] }.merge(scope)).each_with_index{ |item, i| item.update(:position => i + 1) }
-          true
+          retval = true
+          all({ :order => [ :position.asc ] | default_order }.merge(scope)).each_with_index do |item, index|
+            retval &= item.update(:position => index.succ)
+          end
+          retval
         end
 
       end
