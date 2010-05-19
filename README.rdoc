@@ -41,7 +41,7 @@ having their own todo-lists.
   class User
     include DataMapper::Resource
 
-    property :id, Serial
+    property :id,   Serial
     property :name, String
 
     has n, :todos
@@ -50,9 +50,9 @@ having their own todo-lists.
   class Todo
     include DataMapper::Resource
 
-    property :id, Serial
+    property :id,    Serial
     property :title, String
-    property :done, DateTime
+    property :done,  DateTime
 
     belongs_to :user
 
