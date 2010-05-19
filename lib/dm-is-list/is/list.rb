@@ -235,9 +235,9 @@ module DataMapper
       # custom :field
       #
       # @example [Usage]
-      #   is :list  # put this in your model to make it act as a list.
-      #   is :list, :scope => [:user_id] # you can also define scopes
-      #   is :list, :scope => [:user_id, :context_id] # also works with multiple params
+      #   is :list                                      # put this in your model to make it act as a list.
+      #   is :list, :scope => :user_id                  # you can also define scopes
+      #   is :list, :scope => [ :user_id, :context_id ] # also works with multiple params
       #
       # @param options <Hash> a hash of options
       #
@@ -246,6 +246,9 @@ module DataMapper
       # @api public
       def is_list(options={})
         options = { :scope => [], :first => 1 }.merge(options)
+
+        # coerce the scope into an Array
+        options[:scope] = Array(options[:scope])
 
         extend  DataMapper::Is::List::ClassMethods
         include DataMapper::Is::List::InstanceMethods

@@ -23,7 +23,7 @@ class Todo
 
   belongs_to :user
 
-  is :list, :scope => [:user_id]
+  is :list, :scope => :user_id
 end
 
 module TodoListHelper

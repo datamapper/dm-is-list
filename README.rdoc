@@ -57,7 +57,7 @@ having their own todo-lists.
     belongs_to :user
 
     # here we define that this should be a list, scoped on :user_id
-    is :list, :scope => [:user_id]
+    is :list, :scope => :user_id  # you may also pass in multiple properties, eg [ :user_id, :title ]
   end
 
 Once we have our Users and Lists, we might want to work with...
