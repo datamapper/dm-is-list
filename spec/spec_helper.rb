@@ -26,6 +26,8 @@ class Todo
   is :list, :scope => :user_id
 end
 
+DataMapper.finalize
+
 module TodoListHelper
   ##
   # Keep things DRY shortcut
