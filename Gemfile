@@ -83,7 +83,6 @@ group :runtime do # Runtime dependencies (as in the gemspec)
 
   gem 'dm-core',         DM_VERSION, :git => "#{DATAMAPPER}/dm-core.git"
   gem 'dm-adjust',       DM_VERSION, :git => "#{DATAMAPPER}/dm-adjust.git"
-  gem 'dm-transactions', DM_VERSION, :git => "#{DATAMAPPER}/dm-transactions.git"
 
 end
 
