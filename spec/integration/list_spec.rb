@@ -633,10 +633,6 @@ describe 'DataMapper::Is::List' do
 
       describe "CRUD" do
 
-        # describe "#create" do
-        #   pending
-        # end #/ #create
-
         describe "Updating list items" do
 
           it "should NOT loose position when updating other attributes" do
