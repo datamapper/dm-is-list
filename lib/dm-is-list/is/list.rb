@@ -252,8 +252,8 @@ module DataMapper
         extend  DataMapper::Is::List::ClassMethods
         include DataMapper::Is::List::InstanceMethods
 
-        unless properties.any? { |p| p.name == :position && p.primitive == Integer }
-          property :position, Integer
+        unless properties.any? { |p| p.kind_of?(Property::Integer) && p.name == :position }
+          property :position, Integer, :min => options[:first], :required => true
         end
 
         @list_options = options
