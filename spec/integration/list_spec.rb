@@ -568,11 +568,6 @@ describe 'DataMapper::Is::List' do
         end
 
         it "should move an item from one list to a fixed position in another list" do
-          pending %Q{Failing Test: Error = [ no such table: todos ]. Error is due to the nested transactions. (See notes in spec)}
-          # NOTE:: This error happens because of the nested transactions taking place
-          # first within the #move_to_list and then the #move method.
-          # If you comment out either of those transactions, the test passes.
-
           DataMapper.repository(:default) do |repos|
             item = Todo.get(2)
             list_scope = Todo.get(6).list_scope
