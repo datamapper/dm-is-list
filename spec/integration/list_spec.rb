@@ -947,8 +947,8 @@ describe 'DataMapper::Is::List' do
 
         property :id,    Serial
         property :title, String
-        property :position, Integer, :required => true, :unique_index => :position
-        property :client_id, Integer, :unique_index => :position
+        property :position, Integer, :min => 1, :required => true, :unique => :position
+        property :client_id, Integer, :unique => :position
 
         belongs_to :client
 
