@@ -6,17 +6,17 @@ DataMapper plugin for creating and organizing lists.
 
 === Stable
 
-Install the +dm-more+ gem, which will by default install +dm-is-list+ and other required gems.
+Install the <tt>dm-is-list</tt> gem.
 
-  $ (sudo)? gem install dm-more
+  $ (sudo)? gem install dm-is-list
 
 === Edge
 
-Download or clone +dm-more+ from Github[http://github.com/datamapper/dm-more/].
+Download or clone <tt>dm-is-list</tt> from Github[http://github.com/datamapper/dm-is-list/].
 
-  $ cd /path/to/dm-more
+  $ cd /path/to/dm-is-list
 
-  $ rake install            # will install all the dm-more gems (some of which are required by dm-is-list)
+  $ rake install            # will install dm-is-list
 
   # enter your password at the prompt, if required
   $ password ...
@@ -24,11 +24,7 @@ Download or clone +dm-more+ from Github[http://github.com/datamapper/dm-more/].
 
 == Getting started
 
-First of all, for a better understanding of this gem, make sure you study the '<tt>dm-is-list/spec/integration/list_spec.rb</tt>' file.
-
-----
-
-Require +dm-is-list+ in your app.
+To start using this gem, just require <tt>dm-is-list</tt> in your app.
 
   require 'dm-core'         # must be required first
   require 'dm-is-list'
@@ -64,7 +60,7 @@ Once we have our Users and Lists, we might want to work with...
 
 == Movements of list items
 
-Any list item can be moved around <b>within the same list</b> easily through the <tt>\#move</tt> method.
+Any list item can be moved around <b>within the same list</b> easily through the <tt>#move</tt> method.
 
 
 === :move( vector )
@@ -129,8 +125,8 @@ When you move items between scopes, the list will try to work with your intentio
 
 Move the item from list to new list and add the item to the bottom of that list.
 
- item.user_id               # => 1
- item.move_to_list(10)      # => the scope id ie User.get(10).id
+ item.user_id                 # => 1
+ item.move_to_list(10)        # => the scope id ie User.get(10).id
 
  # results in...
  item.user_id                 # => 10
@@ -218,3 +214,28 @@ As I said above, for a better understanding of this gem/plugin, make sure you st
 
 If something is not behaving intuitively, it is a bug, and should be reported.
 Report it here: http://datamapper.lighthouseapp.com/
+
+== TODOs
+
+* None at the moment. Or do you think something is missing?
+
+
+== Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so we don't break it in a future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  * (if you want to have your own version, that is fine but bump version in a commit by itself we can ignore when we pull)
+* Send us a pull request. Bonus points for topic branches.
+
+
+== Copyright
+
+Copyright (c) 2010 Sindre Aarsaether. Released under the MIT License.
+
+See LICENSE for details.
+
+=== Credits
+
+Credit also goes to these contributors[http://github.com/datamapper/dm-is-list/contributors].
