@@ -340,8 +340,7 @@ module DataMapper
         #
         # @api semipublic
         def list_scope
-          pairs = model.list_options[:scope].map{ |p| [ p, attribute_get(p) ] }
-          DataMapper::Ext::Array.to_hash(pairs)
+          Hash[ model.list_options[:scope].map { |p| [ p, attribute_get(p) ] } ]
         end
 
         ##
@@ -356,10 +355,10 @@ module DataMapper
         #
         # @api semipublic
         def original_list_scope
-          pairs = model.list_options[:scope].map{
-            |p| [ p, (property = properties[p]) && original_attributes.key?(property) ? original_attributes[property] : attribute_get(p) ]
-          }
-          DataMapper::Ext::Array.to_hash(pairs)
+          pairs = model.list_options[:scope].map do |p|
+            [ p, (property = properties[p]) && original_attributes.key?(property) ? original_attributes[property] : attribute_get(p) ]
+          end
+          Hash[ pairs ]
         end
 
         ##
