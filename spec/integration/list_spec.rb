@@ -2,10 +2,11 @@ require 'spec_helper'
 
 describe 'DataMapper::Is::List' do
 
-  supported_by :sqlite, :postgres, :mysql, :oracle, :sqlserver do
+  supported_by :in_memory, :yaml, :sqlite, :postgres, :mysql, :oracle, :sqlserver do
 
-    before :each do
+    before do
       DataMapper.auto_migrate!
+      DataMapper::Model.descendants.each { |model| model.destroy! }
 
       @u1 = User.create(:name => 'Johnny')
       Todo.create(:user => @u1, :title => 'Write down what is needed in a list-plugin')
