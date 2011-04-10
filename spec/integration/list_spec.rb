@@ -5,6 +5,7 @@ describe 'DataMapper::Is::List' do
   supported_by :in_memory, :yaml, :sqlite, :postgres, :mysql, :oracle, :sqlserver do
 
     before do
+      DataMapper.auto_migrate!
       DataMapper::Model.descendants.each { |model| model.destroy! }
 
       @u1 = User.create(:name => 'Johnny')
