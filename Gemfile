@@ -10,6 +10,10 @@ DO_VERSION     = '~> 0.10.6'
 DM_DO_ADAPTERS = %w[ sqlite postgres mysql oracle sqlserver ]
 CURRENT_BRANCH = ENV.fetch('GIT_BRANCH', 'master')
 
+gem 'dm-core', DM_VERSION,
+  SOURCE  => "#{DATAMAPPER}/dm-core#{REPO_POSTFIX}",
+  :branch => CURRENT_BRANCH
+
 gem 'dm-adjust', DM_VERSION,
   SOURCE  => "#{DATAMAPPER}/dm-adjust#{REPO_POSTFIX}",
   :branch => CURRENT_BRANCH
