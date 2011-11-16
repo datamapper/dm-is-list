@@ -4,7 +4,7 @@ require File.expand_path('../lib/dm-is-list/is/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors     = [ 'Sindre Aarsaether' ]
   gem.email       = [ 'sindre [a] identu [d] no' ]
-  gem.summary     = 'DataMapper plugin allowing interaction with models through a CLI'
+  gem.summary     = 'DataMapper plugin for creating and organizing lists'
   gem.description = gem.summary
   gem.homepage    = "http://datamapper.org"
 
