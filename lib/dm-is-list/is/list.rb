@@ -542,7 +542,7 @@ module DataMapper
             prepos = original_attributes[properties[:position]] || position
 
             # set the last position in the list or previous position if the last item
-            maxpos = (last = list.last) ? (last == self ? prepos : last.position + 1) : minpos
+            maxpos = (last = list.last) ? (last == self ? prepos : (last.position || 0) + 1) : minpos
 
             newpos = case action
               when :highest     then minpos
