@@ -521,7 +521,7 @@ describe 'DataMapper::Is::List' do
 
             item.original_list_scope.should == { :user_id => @u1.id }
             item.list_scope.should == { :user_id => @u1.id }
-            # item.list_scope.should != item.original_list_scope  # FAIL. accepts both != and ==
+            # item.list_scope.should_not == item.original_list_scope  # FAIL. accepts both != and ==
             item.position.should == nil
 
             todo_list.should == [[1, 1], [2,nil], [3, 2], [4, 3], [5, 4]]
@@ -538,7 +538,7 @@ describe 'DataMapper::Is::List' do
 
             item.original_list_scope.should == { :user_id => @u1.id }
             item.list_scope.should == { :user_id => @u1.id }
-            # item.list_scope.should != item.original_list_scope  # FAIL. accepts both != and ==
+            # item.list_scope.should_not == item.original_list_scope  # FAIL. accepts both != and ==
             item.position.should == nil
 
             todo_list.should == [[1, 1], [2,nil], [3, 2], [4, 3], [5, 4]]
@@ -834,9 +834,10 @@ describe 'DataMapper::Is::List' do
             item.user.should == @u1
 
             item.user = @u2
+            item.list_scope.should_not == item.original_list_scope
+
             item.save
 
-            item.list_scope.should != item.original_list_scope
             item.list_scope.should == { :user_id => @u2.id }
             item.position.should == 2
 
@@ -854,9 +855,9 @@ describe 'DataMapper::Is::List' do
 
             item.position = nil  #  NOTE:: Creates a messed up original list.
             item.user = @u2
-            item.save
+            item.list_scope.should_not == item.original_list_scope
 
-            item.list_scope.should != item.original_list_scope
+            item.save
             item.list_scope.should == { :user_id => @u2.id }
             item.position.should == 4
 
@@ -874,9 +875,7 @@ describe 'DataMapper::Is::List' do
 
       describe "STI inheritance" do
 
-        it "should have some tests" do
-          pending
-        end
+        it "should have some tests"
 
       end #/ STI inheritance
 
@@ -979,8 +978,8 @@ describe 'DataMapper::Is::List' do
           end
         end
 
-        it "should move items :higher in list" do
-          pending "Failing Test: Error = [ columns position, client_id are not unique ] (See notes in spec)"
+        xit "should move items :higher in list" do
+          # pending "Failing Test: Error = [ columns position, client_id are not unique ] (See notes in spec)"
           # NOTE:: This error happens because of the :unique_index => position setting.
           # Most likely the reason is due to the order of updates to the position attribute in the DB is NOT
           # fully consistant, and clashes therefore occur.
@@ -994,8 +993,8 @@ describe 'DataMapper::Is::List' do
           end
         end
 
-        it "should move items :lower in list" do
-          pending "Failing Test: Error = [ columns position, client_id are not unique ] (See notes in spec)"
+        xit "should move items :lower in list" do
+          # pending "Failing Test: Error = [ columns position, client_id are not unique ] (See notes in spec)"
           DataMapper.repository(:default) do |repos|
             ClientTodo.get(9).move(:lower).should == true
             ClientTodo.all.map{ |a| [a.id, a.position] }.should == (1..8).map { |n| [n,n] } + [ [9, 10], [10, 9] ] + (11..@loop).map { |n| [n,n] }
