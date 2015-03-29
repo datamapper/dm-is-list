@@ -1,0 +1,13 @@
+bundler_args: --without yard guard metrics benchmarks
+script: "bundle exec rake spec"
+rvm:
+  - 2.0.0
+  - 2.1.5
+  - 2.2.1
+  - ruby-head
+  - jruby-head
+  - rbx-2
+notifications:
+  irc: "irc.freenode.org#datamapper"
+  email:
+    - dan.kubb@gmail.com

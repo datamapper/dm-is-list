@@ -42,7 +42,7 @@ module TodoListHelper
   end
 end
 
-Spec::Runner.configure do |config|
+RSpec.configure do |config|
   config.extend(DataMapper::Spec::Adapters::Helpers)
   config.send(:include, TodoListHelper)
 end
