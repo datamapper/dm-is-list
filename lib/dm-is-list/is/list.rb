@@ -292,12 +292,6 @@ module DataMapper
         before :destroy do
           detach
         end
-
-        # we need to make sure that STI-models will inherit the list_scope.
-        after_class_method :inherited do |retval, target|
-          target.instance_variable_set(:@list_options, @list_options.dup)
-        end
-
       end # is_list
 
       module ClassMethods
@@ -320,6 +314,12 @@ module DataMapper
             retval &= item.update(:position => index.succ)
           end
           retval
+        end
+
+        # we need to make sure that STI-models will inherit the list_scope.
+        def inherited(model)
+          super
+          model.instance_variable_set(:@list_options, @list_options.dup)
         end
 
       end
