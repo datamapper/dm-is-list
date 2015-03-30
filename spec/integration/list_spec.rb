@@ -206,6 +206,13 @@ describe 'DataMapper::Is::List' do
             end
           end
 
+          it "should move item directly :above another in list even if it's already above it" do
+            DataMapper.repository(:default) do |repos|
+              Todo.get(2).move(:above => Todo.get(4) ).should == true
+              todo_list.should == [ [1, 1], [3, 2], [2, 3], [4, 4], [5, 5] ]
+            end
+          end
+
           it "should NOT move item :above itself" do
             DataMapper.repository(:default) do |repos|
               Todo.get(1).move(:above => Todo.get(1) ).should == false
@@ -235,6 +242,13 @@ describe 'DataMapper::Is::List' do
             DataMapper.repository(:default) do |repos|
               Todo.get(2).move(:below => Todo.get(3) ).should == true
               todo_list.should == [ [1, 1], [3, 2], [2, 3], [4, 4], [5, 5] ]
+            end
+          end
+
+          it "should move item directly :below another in list even if it's already below it" do
+            DataMapper.repository(:default) do |repos|
+              Todo.get(4).move(:below => Todo.get(2) ).should == true
+              todo_list.should == [ [1, 1], [2, 2], [4, 3], [3, 4], [5, 5] ]
             end
           end
 

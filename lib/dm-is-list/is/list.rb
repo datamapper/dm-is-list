@@ -556,14 +556,14 @@ module DataMapper
                 # -- the same as self
                 # -- already below self
                 # -- higher up than self (lower number in list)
-                ( (self == object) or (object.position > self.position) ) ? self.position : object.position
+                ( (self == object) or (object.position == self.position + 1) ) ? self.position : object.position
 
               when :below
                 # the object given, can either be:
                 # -- the same as self
                 # -- already above self
                 # -- lower than self (higher number in list)
-                ( self == object or (object.position < self.position) ) ? self.position : object.position + 1
+                ( self == object or (object.position == self.position - 1) ) ? self.position : object.position + 1
 
               when :to
                 # can only move within top and bottom positions of list
